@@ -172,7 +172,9 @@
                     checkField(ff);
                     if(!ff.validity.valid && !invalid) {
                         if(isSubmit) { // If it's not a submit event the field shouldn't be focused
-                            ff.focus();
+                            try {
+                                ff.focus();
+                            } catch(e) { /* Ignored */ }
                         }
                         invalid = true;
                         args.onInvalid.call(el, ff);
